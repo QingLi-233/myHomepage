@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="dtaYeij8CMHEnyTgj472NG">
+<head data-page-node-id="FGG27LZC2N6ZQqGZyF9jVr">
+<meta charset="UTF-8" data-page-node-id="9lfmgRJeREkz3lA62Diluz">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="CgBJXQvydmJI5ADTig4l5V">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#ffffff">
+<title>陈柳君 · 个人主页</title>
+
+<style>
+/* ==================== :root 全局变量（改这里就够） ==================== */
+:root{
+  --c-primary:      #2563eb;
+  --c-primary-dark: #1d4ed8;
+  --c-primary-soft: #eff6ff;
+  --c-text:         #1f2937;
+  --c-text-2:       #4b5563;
+  --c-text-3:       #9ca3af;
+  --c-line:         #e5e7eb;
+  --c-bg:           #f5f6f8;
+  --c-card:         #ffffff;
+
+  --fs-base:  15px;
+  --fs-name:  30px;
+  --fs-h2:    19px;
+  --fs-h3:    17px;
+  --fs-small: 13.5px;
+  --fs-tag:   13px;
+
+  --font: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC","Source Han Sans SC","WenQuanYi Micro Hei","Segoe UI",system-ui,-apple-system,Arial,sans-serif;
+  --page-w: 980px;
+  --radius:  14px;
+  --proj-img-w: 220px;
+  --proj-img-h: 160px;
+  --avatar-w: 124px;
+  --avatar-h: 158px;
+  --work-card-w: 620px;
+  --work-h:      230px;
+  --work-gap:    18px;
+  --rail-w:      54px;
+  --rail-open-w: 184px;
+}
+
+*{ box-sizing: border-box; }
+html, body{ margin:0; padding:0; }
+body{
+  font-family: var(--font);
+  font-size: var(--fs-base);
+  line-height: 1.7;
+  color: var(--c-text);
+  background: var(--c-bg);
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+a{ color: var(--c-primary); text-decoration: none; }
+a:hover{ color: var(--c-primary-dark); }
+button{ font-family: inherit; font-size: var(--fs-tag); color: inherit; cursor: pointer; }
+
+.page{ max-width: var(--page-w); margin: 0 auto; padding: 32px 20px 60px; }
+
+/* ---------------- 卡片 ---------------- */
+.card{
+  background: var(--c-card);
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius);
+  padding: 22px 26px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 2px rgba(16,24,40,.04);
+}
+
+/* ---------------- 顶部信息 ---------------- */
+.hero{ display:flex; align-items: flex-start; }
+.avatar{
+  width: var(--avatar-w); height: var(--avatar-h); flex: 0 0 auto;
+  margin-right: 26px;
+  border-radius: 10px;
+  border: 1px solid var(--c-line);
+  background-color: #fafafa;
+  background-size: cover; background-position: center;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+}
+.avatar .ph-hint{ font-size: var(--fs-tag); color: var(--c-text-3); text-align:center; line-height:1.5; }
+.has-img .ph-hint{ display:none; }
+
+.hero-main{ flex: 1 1 auto; min-width: 0; }
+.name{
+  margin: 0 0 6px; font-size: var(--fs-name); line-height:1.25;
+  font-weight: 700; letter-spacing: .5px; color: var(--c-text);
+}
+.subtitle{ margin: 0 0 10px; color: var(--c-text-2); font-size: calc(var(--fs-base) + 0.5px); }
+.meta{ margin: 3px 0; color: var(--c-text-2); }
+.meta .k, .kv .k, .stack .k{ color: var(--c-text-3); }
+.meta strong{ color: var(--c-primary); font-weight: 600; }
+.desc{ margin: 12px 0 16px; color: var(--c-text-2); }
+
+/* ---------------- 按钮 ---------------- */
+.btn{
+  display:inline-block;
+  padding: 7px 16px; border-radius: 999px;
+  font-size: var(--fs-tag); font-weight: 500; line-height: 1.6;
+  border: 1px solid var(--c-line); background:#fff; color: var(--c-text-2);
+  text-align: center; white-space: nowrap;
+  transition: color .18s ease, background-color .18s ease, border-color .18s ease;
+}
+.btn:hover{ border-color: var(--c-primary); color: var(--c-primary); background: var(--c-primary-soft); }
+.btn:active{ background: var(--c-primary-soft); border-color: var(--c-primary); color: var(--c-primary); }
+.btn-primary{ background: var(--c-primary); border-color: var(--c-primary); color:#fff; }
+.btn-primary:hover{ background: var(--c-primary-dark); border-color: var(--c-primary-dark); color:#fff; }
+.btn-primary:active{ background: var(--c-primary-dark); border-color: var(--c-primary-dark); color:#fff; }
+
+/* ---------------- 板块标题 ---------------- */
+.section-title{
+  display:flex; align-items:center;
+  margin: 0 0 18px; font-size: var(--fs-h2); font-weight: 700; color: var(--c-text);
+}
+.section-title::before{
+  content:""; width: 4px; height: 18px; border-radius: 2px; background: var(--c-primary);
+  margin-right: 10px;
+}
+
+/* ---------------- 项目 ---------------- */
+.project{
+  display:grid;
+  grid-template-columns: var(--proj-img-w) 1fr;
+  gap: 20px;
+  padding: 18px 0;
+  border-top: 1px dashed var(--c-line);
+}
+.project:first-of-type{ border-top: none; padding-top: 4px; }
+
+.proj-media{
+  width: var(--proj-img-w); height: var(--proj-img-h);
+  border-radius: 10px; border: 1px solid var(--c-line);
+  background-color:#fafafa; background-size: cover; background-position: center;
+  display:flex; align-items:center; justify-content:center;
+  font-size: var(--fs-tag); color: var(--c-text-3); text-align:center;
+}
+
+.proj-title{ margin: 0 0 8px; font-size: var(--fs-h3); font-weight: 600; color: var(--c-text); line-height:1.45; }
+.kv{ list-style:none; margin:0 0 8px; padding:0; }
+.kv li{ display:flex; font-size: var(--fs-small); color: var(--c-text-2); line-height:1.75; }
+.kv .k{ flex: 0 0 50px; padding-right: 8px; }
+.kv .v{ flex: 1 1 auto; }
+.kv .v em{ font-style: normal; color: var(--c-primary); font-weight: 600; }
+.stack{ margin: 8px 0 12px; font-size: var(--fs-small); color: var(--c-text-2); }
+
+/* 方括号标签按钮 */
+.links{ display:flex; flex-wrap:wrap; margin: -4px; }
+.links > *{ margin: 4px; }
+.tag{
+  display:inline-block; padding: 3px 12px; border-radius: 6px;
+  font-size: var(--fs-tag);
+  background: var(--c-primary-soft); color: var(--c-primary);
+  border: 1px solid transparent; transition: all .18s ease;
+}
+.tag::before{ content:"[ "; opacity:.55; }
+.tag::after { content:" ]"; opacity:.55; }
+.tag:hover{ background: var(--c-primary); color:#fff; border-color: var(--c-primary); }
+.tag:active{ background: var(--c-primary); color:#fff; border-color: var(--c-primary); }
+
+@media (hover: none){
+  .btn:hover{ border-color: var(--c-line); color: var(--c-text-2); background:#fff; }
+  .btn-primary:hover{ background: var(--c-primary); border-color: var(--c-primary); color:#fff; }
+  .rail-btn:hover{ background: transparent; color: var(--c-text-2); width: var(--rail-w); }
+  .rail-btn:hover .rail-label{ opacity: 0; }
+  .rail-btn.is-primary:hover{ background: var(--c-primary); color:#fff; }
+  .tag:hover{ background: var(--c-primary-soft); color: var(--c-primary); }
+  .work:hover{ border-color: var(--c-line); box-shadow:none; }
+  .work:hover .work-title{ color: var(--c-text); }
+  .work:hover .work-go{ color: var(--c-text-3); }
+  .award:hover{ border-color: var(--c-line); box-shadow:none; }
+  .award:hover .award-hint{ color: var(--c-text-3); }
+}
+
+/* ---------------- 作品集：自动滚动窗格 ---------------- */
+.pane-wrap{ position: relative; }
+.pane-wrap::before, .pane-wrap::after{
+  content: ""; position: absolute; top: 0; bottom: 0; width: 26px; z-index: 2; pointer-events: none;
+}
+.pane-wrap::before{ left: 0;  background: linear-gradient(to right, #fff, rgba(255,255,255,0)); }
+.pane-wrap::after { right: 0; background: linear-gradient(to left,  #fff, rgba(255,255,255,0)); }
+
+.pane{
+  display: flex; flex-wrap: nowrap;
+  overflow-x: auto; overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab; padding: 2px 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.pane::-webkit-scrollbar{ height: 0; display: none; }
+.pane.is-drag{ cursor: grabbing; }
+.pane:focus-visible{ outline: 2px solid var(--c-primary); outline-offset: 3px; border-radius: 10px; }
+
+.works-row{ display: flex; flex-wrap: nowrap; align-items: stretch; flex: 0 0 auto; }
+
+.work{
+  display: flex; align-items: stretch;
+  flex: 0 0 auto; box-sizing: border-box;
+  width: var(--work-card-w); min-height: var(--work-h);
+  margin-right: var(--work-gap);
+  border: 1px solid var(--c-line); border-radius: 12px;
+  background: #fff; overflow: hidden;
+  color: inherit; text-decoration: none; cursor: pointer;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color .18s ease, box-shadow .18s ease;
+}
+.work:hover, .work:active{ border-color: var(--c-primary); box-shadow: 0 6px 18px rgba(16,24,40,.08); }
+.work:hover .work-title{ color: var(--c-primary); }
+.work:focus-visible{ outline: 2px solid var(--c-primary); outline-offset: 3px; }
+
+.work-media{
+  flex: 0 0 60%; min-width: 0;
+  display: flex; align-items: center; justify-content: center;
+  background-color: #fafafa; background-size: cover; background-position: center;
+  border-right: 1px solid var(--c-line);
+}
+.work-media .ph-hint{ font-size: var(--fs-tag); color: var(--c-text-3); text-align: center; }
+
+.work-body{ flex: 1 1 auto; min-width: 0; padding: 18px; display: flex; flex-direction: column; }
+.work-title{ margin: 0 0 8px; font-size: var(--fs-h3); font-weight: 600; color: var(--c-text); line-height: 1.45; }
+.work-desc{
+  margin: 0 0 10px; font-size: var(--fs-small); color: var(--c-text-2);
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden;
+}
+.work-meta{ margin: 0 0 14px; font-size: var(--fs-tag); color: var(--c-text-3); }
+.work-meta .dot{ margin: 0 7px; opacity: .7; }
+.work-go{
+  margin-top: auto;
+  display: inline-flex; align-items: center;
+  font-size: var(--fs-tag); color: var(--c-text-3);
+  transition: color .18s ease;
+}
+.work-go svg{ width: 13px; height: 13px; margin-left: 5px; }
+.work:hover .work-go{ color: var(--c-primary); }
+
+.section-head{ display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+.section-head .section-title{ margin-bottom: 0; }
+.pane-hint{ font-size: var(--fs-tag); color: var(--c-text-3); white-space: nowrap; margin-left: 12px; }
+
+/* ---------------- 论文（列表） ---------------- */
+.list{ list-style:none; margin:0; padding:0; }
+.list > li{ padding: 14px 0; border-top: 1px dashed var(--c-line); }
+.list > li:first-child{ border-top:none; padding-top: 2px; }
+.item-title{ margin: 0 0 4px; font-size: var(--fs-base); font-weight: 600; color: var(--c-text); }
+.item-meta{ margin: 0 0 4px; font-size: var(--fs-small); color: var(--c-text-3); }
+.item-note{ margin: 0 0 10px; font-size: var(--fs-small); color: var(--c-text-2); }
+.item-meta .sep{ margin: 0 8px; opacity:.6; }
+
+/* ---------------- 竞赛（PC 两列 / 手机单列） ---------------- */
+.awards{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+.award{
+  display: block; box-sizing: border-box;
+  padding: 15px 16px 14px;
+  border: 1px solid var(--c-line); border-radius: 11px;
+  background: #fff; cursor: pointer; text-align: left;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color .18s ease, box-shadow .18s ease;
+}
+.award:hover, .award:active{ border-color: var(--c-primary); box-shadow: 0 6px 16px rgba(16,24,40,.08); }
+.award:focus-visible{ outline: 2px solid var(--c-primary); outline-offset: 2px; }
+.award-time{ margin: 0 0 6px; font-size: var(--fs-tag); color: var(--c-text-3); }
+.award-title{ margin: 0 0 6px; font-size: var(--fs-base); font-weight: 600; color: var(--c-text); line-height: 1.45; }
+.award-result{ margin: 0; font-size: var(--fs-small); color: var(--c-text-2); line-height: 1.6; }
+.award-result strong{ color: var(--c-primary); font-weight: 600; }
+.award-hint{
+  display: inline-flex; align-items: center; margin-top: 9px;
+  font-size: var(--fs-tag); color: var(--c-text-3);
+  transition: color .18s ease;
+}
+.award-hint svg{ width: 12px; height: 12px; margin-left: 4px; }
+.award:hover .award-hint{ color: var(--c-primary); }
+.award-data{ display: none; }
+
+/* ---------------- 技能 ---------------- */
+.skills{ display:flex; flex-wrap:wrap; margin: -4px; }
+.skills > *{ margin: 4px; }
+.skill{
+  padding: 5px 14px; border-radius: 999px;
+  background: #f3f4f6; color: var(--c-text-2);
+  font-size: var(--fs-tag); border: 1px solid var(--c-line);
+}
+
+/* ---------------- 左侧固定栏 ---------------- */
+.rail{
+  position: fixed;
+  top: 50%; left: 0;
+  transform: translateY(-50%);
+  z-index: 40;
+  width: var(--rail-w);
+  padding: 8px 0;
+  background: var(--c-card);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  box-shadow: 0 6px 24px rgba(16,24,40,.12);
+}
+.rail-list{ display: flex; flex-direction: column; }
+.rail-btn{
+  display: flex; align-items: center;
+  width: var(--rail-w);
+  height: 40px;
+  padding: 0 12px 0 16px;
+  overflow: hidden;
+  border: none; border-radius: 0 10px 10px 0;
+  font-size: var(--fs-tag); font-weight: 500; line-height: 1.3;
+  color: var(--c-text-2); background: transparent;
+  text-align: left; white-space: nowrap;
+  transition: width .22s ease, color .18s ease, background-color .18s ease;
+}
+.rail-btn + .rail-btn{ margin-top: 2px; }
+.rail-btn svg{ width: 18px; height: 18px; flex: 0 0 auto; fill: currentColor; }
+.rail-label{ margin-left: 11px; opacity: 0; transition: opacity .16s ease .04s; }
+
+.rail-btn:hover{ width: var(--rail-open-w); }
+.rail-btn:hover .rail-label{ opacity: 1; }
+.rail-btn:hover,
+.rail-btn:active{ background: var(--c-primary-soft); color: var(--c-primary); }
+.rail-btn:focus-visible{ width: var(--rail-open-w); outline: 2px solid var(--c-primary); outline-offset: -2px; }
+.rail-btn:focus-visible .rail-label{ opacity: 1; }
+.rail-btn.is-primary{ background: var(--c-primary); color: #fff; }
+.rail-btn.is-primary:hover,
+.rail-btn.is-primary:active,
+.rail-btn.is-primary:focus-visible{ background: var(--c-primary-dark); color: #fff; }
+.rail-btn:focus-visible{ outline: 2px solid var(--c-primary); outline-offset: 2px; }
+
+/* ---------------- 底部 ---------------- */
+.copyright{ text-align:center; color: var(--c-text-3); font-size: var(--fs-tag); margin-top: 16px; }
+
+/* ---------------- 弹窗通用 ---------------- */
+.modal{
+  position: fixed;
+  top:0; right:0; bottom:0; left:0;
+  inset: 0;
+  z-index: 50; display:flex; align-items:center; justify-content:center;
+}
+.modal[hidden]{ display:none; }
+.modal-mask{ position:absolute; inset:0; background: rgba(17,24,39,.45); }
+.modal-box{
+  position:relative; background:#fff; border-radius: var(--radius);
+  padding: 22px 26px; text-align:center; min-width: 240px;
+  max-width: calc(100vw - 32px); max-width: calc(100% - 32px);
+  box-shadow: 0 20px 40px rgba(16,24,40,.18);
+}
+.modal-box h4{ margin: 0 0 14px; font-size: var(--fs-h3); }
+.qr{
+  width: 180px; height: 180px; margin: 0 auto 12px;
+  border: 1px dashed var(--c-line); border-radius: 10px;
+  background-color:#fafafa; background-size: cover; background-position: center;
+  display:flex; align-items:center; justify-content:center;
+  font-size: var(--fs-tag); color: var(--c-text-3); text-align:center;
+}
+.modal-box .hint{ margin: 0 0 16px; font-size: var(--fs-tag); color: var(--c-text-2); }
+
+/* ---------------- 竞赛详情弹窗 ---------------- */
+.award-box{
+  width: 100%;
+  max-width: calc(100% - 32px);
+  max-width: min(720px, calc(100% - 32px));
+  max-height: 86vh; overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 24px 26px 24px;
+  text-align: left;
+}
+.modal-x{
+  position: absolute; top: 10px; right: 10px;
+  width: 32px; height: 32px; padding: 0;
+  border: none; border-radius: 50%; background: transparent;
+  color: var(--c-text-3); font-size: 22px; line-height: 1; cursor: pointer;
+}
+.modal-x:hover, .modal-x:active{ background: #f3f4f6; color: var(--c-text); }
+.aw-title{ margin: 0 34px 6px 0; font-size: var(--fs-h3); font-weight: 700; color: var(--c-text); line-height: 1.45; }
+.aw-meta{ margin: 0 0 14px; font-size: var(--fs-tag); color: var(--c-text-3); }
+.aw-detail{ font-size: var(--fs-small); color: var(--c-text-2); line-height: 1.85; }
+.aw-detail p{ margin: 0 0 8px; }
+.aw-detail ul{ margin: 0 0 8px; padding-left: 18px; }
+.aw-detail li{ margin-bottom: 3px; }
+.aw-detail strong{ color: var(--c-primary); font-weight: 600; }
+.aw-cert{
+  margin: 4px 0 16px;
+  width: 100%; padding-top: 66%;
+  border: 1px dashed var(--c-line); border-radius: 10px;
+  background-color: #fafafa; background-repeat: no-repeat;
+  background-size: contain; background-position: center;
+  position: relative;
+}
+.aw-cert .ph-hint{
+  position: absolute; left: 0; top: 0; right: 0; bottom: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: var(--fs-tag); color: var(--c-text-3); text-align: center;
+}
+.has-img .ph-hint{ display: none; }
+.aw-foot{ display: flex; flex-wrap: wrap; }
+
+/* ---------------- 响应式 ---------------- */
+@media (max-width: 1149px){
+  .rail{
+    top: auto; left: 0; right: 0; bottom: 0;
+    transform: none; width: auto; border-radius: 0;
+    padding: 7px 8px;
+    padding-bottom: calc(7px + env(safe-area-inset-bottom, 0px));
+    box-shadow: 0 -6px 20px rgba(16,24,40,.10);
+  }
+  .rail-list{ display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 4px; gap: 4px; }
+  .rail-btn{
+    width: 100%; height: auto; justify-content: center;
+    padding: 8px 6px; font-size: 11.5px; border-radius: 9px;
+  }
+  .rail-btn + .rail-btn{ margin-top: 0; }
+  .rail-btn svg{ width: 15px; height: 15px; }
+  .rail-label{ margin-left: 6px; opacity: 1; }
+  .rail-btn:hover, .rail-btn:focus-visible{ width: 100%; }
+  body{ padding-bottom: 100px; }
+}
+
+@media (max-width: 860px){
+  :root{ --proj-img-w: 180px; --proj-img-h: 140px; }
+}
+
+@media (max-width: 720px){
+  .hero{ flex-direction: column; align-items: center; text-align: center; }
+  .avatar{ margin: 0 0 18px; }
+  .hero-main{ width:100%; }
+  .actions{ justify-content: center; }
+  .project{ grid-template-columns: 1fr; }
+  .proj-media{ width: 100%; height: 180px; }
+  :root{ --work-card-w: calc(100vw - 96px); --work-h: 190px; --work-gap: 12px; }
+  .work-body{ padding: 14px; }
+  .work-desc{ -webkit-line-clamp: 2; }
+  .work-meta{ margin-bottom: 10px; }
+  .pane-hint{ display: none; }
+  .awards{ grid-template-columns: 1fr; gap: 10px; }
+  .award-box{ padding: 20px 16px 18px; max-height: 90vh; }
+  .aw-title{ margin-right: 30px; }
+  .kv .k{ flex-basis: 56px; }
+  .card{ padding: 18px 16px; }
+  :root{ --fs-name: 26px; }
+  .btn{ padding: 9px 18px; }
+  .tag{ padding: 6px 14px; }
+}
+
+@media (max-width: 400px){
+  .page{ padding: 18px 10px 40px; }
+  .card{ padding: 14px 12px; border-radius: 10px; }
+  :root{ --avatar-w: 104px; --avatar-h: 132px; --fs-name: 23px; --fs-h2: 17px; --work-h: 172px; --work-gap: 10px; }
+  .kv .k{ flex-basis: 48px; }
+  .proj-media{ height: 150px; }
+  .work-media{ flex-basis: 52%; }
+  .work-body{ padding: 12px; }
+}
+
+@media print{
+  body{ background:#fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; padding-bottom: 0; }
+  .rail, .modal{ display:none !important; }
+  .card{ box-shadow:none; }
+  .project, .work, .award, .list > li{ break-inside: avoid; page-break-inside: avoid; }
+  .pane{ display: block; overflow: visible; cursor: auto; }
+  .works-row{ display: block; }
+  .works-row + .works-row{ display: none; }
+  .work{ width: 100%; margin: 0 0 10px; min-height: 0; }
+  .pane-wrap::before, .pane-wrap::after{ display: none; }
+}
+</style>
+</head>
+
+<body data-page-node-id="i4136al4suAjkJ33BRFfel">
+<div class="page" data-page-node-id="OhSaAZg8QFFOPCVkp1bt9w">
+
+  <!-- =================================================================
+       顶部信息
+  ================================================================== -->
+  <header class="card hero" data-page-node-id="8U4C4IIBQnPtc0l5eQFIkC">
+    <div class="avatar ph-img" style="background-image:url('images/photo.jpg')" data-page-node-id="eQICNHKDYzf7c2LXHj8Kgp">
+      <span class="ph-hint" data-page-node-id="gPj7bhSETCApIdhapFC9gh">照片<br data-page-node-id="xWnPfof85mGFNzmpbdzTPG">124 × 158</span>
+    </div>
+
+    <div class="hero-main" data-page-node-id="DFeBwhTvk8d5QLdJrWxznU">
+      <h1 class="name" data-page-node-id="bq9hFYSHLcrz9pYZV8oEVo">陈&nbsp;柳&nbsp;君</h1>
+
+      <p class="subtitle" data-page-node-id="KOENWCaGYftvj10uNbiqtH">计算机技术 · 专业硕士 @ <a href="https://www.szu.edu.cn/" target="_blank" rel="noopener" data-page-node-id="GSjRUseyQeSucFrJbN9CbU">深圳大学</a> <a href="https://csse.szu.edu.cn/" target="_blank" rel="noopener" data-page-node-id="GSjRUseyQeSucFrJbN9CbU">计算机与软件学院</a></p>
+
+      <p class="meta" data-page-node-id="2ugWc9qHcoPZioJTxl59ei"><span class="k" data-page-node-id="ECWl1RxqjeAmJxiziipNn1">政治面貌：</span>中共党员&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="k" data-page-node-id="ECWl1RxqjeAmJxiziipNn1">Email：</span>clj133566@foxmail.com</p>
+
+      <p class="desc" data-page-node-id="rqc552gHYqw4f2wxn4hi71">专注目标检测与跨视角目标地理定位，具备 PyTorch 工程与论文复现经验。</p>
+    </div>
+  </header>
+
+  <!-- =================================================================
+       项目经历（只保留第一份实际展示的 1 个项目，其余注释保留）
+  ================================================================== -->
+  <section class="card" data-page-node-id="CzdCbFGALMlmavk5l5anLK">
+    <h2 class="section-title" data-page-node-id="1szixx0svdemDnvAJK5e7v">项目经历</h2>
+
+    <!-- ========== 项目 1 ========== -->
+    <article class="project" data-page-node-id="daJXHvURPWhHCafcF9gACX">
+      <div class="proj-media ph-img" style="background-image:url('images/project1.png')" data-page-node-id="Hy4PDubaaox1PDC2isndjD">
+        <span class="ph-hint" data-page-node-id="iodAiFiGVhWgt86goPzXLx">项目展示图<br data-page-node-id="hwIynJxey33l2bE8kn2Fb0">project1.jpg</span>
+      </div>
+      <div class="proj-body" data-page-node-id="d8t5vQISXHRFta74VYfjhZ">
+        <h3 class="proj-title" data-page-node-id="m8ViMei2MbeHpBscHnnSKe">基于故障切换算法和 Kubernetes 容器编辑技术的容灾和资源管理系统</h3>
+        <ul class="kv" data-page-node-id="ytkciKDWjn2XuZF99Yq7gi">
+          <li data-page-node-id="nfIbhL0ZYXgrCMUs64QXPH"><span class="k" data-page-node-id="xVgKzAluwf0vSKC4yVJ8F4">角色</span><span class="v" data-page-node-id="JYMO7u6D2FXC2LQGAABAOD">核心成员（5人团队）</span></li>
+          <li data-page-node-id="aT70pRjRcm3nsfpYBjAfkU"><span class="k" data-page-node-id="t8B3DNhUJKlEtDp3rO7CBZ">任务</span><span class="v" data-page-node-id="WMwRexvayxeUyvPqVb0DPL">设计实现一个适用于灾备系统的容灾和资源管理系统，实现异地容灾、实时备份和数据一致等功能。</span></li>
+          <li data-page-node-id="rrEV3AkDPQfR05gSxlWb9L"><span class="k" data-page-node-id="6uOxA43pKEq4ODTtDMZ26m">方法</span><span class="v" data-page-node-id="h4T7Xh0zgNIzKscuxf2Jpr">设计故障切换算法 + 引入Kubernetes容器技术</span></li>
+        </ul>
+        <p class="stack" data-page-node-id="4fojcYHn9iyvO0GP5aCOFy"><span class="k" data-page-node-id="44M3USvpndTEP1PS3tL19S">技术栈：</span>Kubernetes、Java、JavaScript</p>
+        <div class="links" data-page-node-id="qW96eO6GIJeuxqAZAAQaQd"></div>
+      </div>
+    </article>
+
+    <!-- ========== 项目 2（第一份无内容，注释保留） ==========
+    <article class="project">…</article>
+    ============================================================ -->
+
+    <!-- ========== 项目 3（第一份无内容，注释保留） ==========
+    <article class="project">…</article>
+    ============================================================ -->
+  </section>
+
+  <!-- =================================================================
+       作品集 · 自动滚动窗格
+  ================================================================== -->
+  <section class="card">
+    <div class="section-head">
+      <h2 class="section-title">个人作品集</h2>
+    </div>
+
+    <div class="pane-wrap">
+      <div class="pane" id="workPane" tabindex="0" aria-label="作品集，可横向滚动">
+        <div class="works-row" id="workRow">
+
+          <!-- ========== 作品 1 ========== -->
+          <a class="work" href="https://github.com/QingLi-233/YOLOv8n-based_AimBot_for_CS2" target="_blank" rel="noopener" draggable="false">
+            <div class="work-media ph-img" style="background-image:url('images/work1_exhibition.png')">
+              <span class="ph-hint">作品展示图<br>work1.jpg（16:10）</span>
+            </div>
+            <div class="work-body">
+              <h3 class="work-title">基于YOLOv8n目标检测模型的CS2辅助瞄准器</h3>
+              <p class="work-desc">开箱即用，内置热键和可视化选择</p>
+              <p class="work-meta">开源工具<span class="dot">·</span>2025.06<span class="dot">·</span>Python / PyTorch / OpenCV<span class="dot">·</span>CS2</p>
+              <span class="work-go">打开 GitHub 仓库<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+
+          <!-- ========== 作品 2 ========== -->
+          <a class="work" href="https://github.com/QingLi-233/OneReward-based_DataAugmentationTool" target="_blank" rel="noopener" draggable="false">
+            <div class="work-media ph-img" style="background-image:url('images/work2_exhibition.png')">
+              <span class="ph-hint">作品展示图<br>work2.jpg（16:10）</span>
+            </div>
+            <div class="work-body">
+              <h3 class="work-title">基于OneReward的目标检测数据增强工具</h3>
+              <p class="work-desc">上传遥感图片即可在线推理，支持多类别标注框可视化与结果导出。</p>
+              <p class="work-meta">图像填充 + 数据增强<span class="dot">·</span>2026.03<span class="dot">·</span>Python / PyTorch / Diffusion</p>
+              <span class="work-go">打开 GitHub 仓库<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+
+          <!-- ========== 作品 3 ========== -->
+          <a class="work" href="https://github.com/QingLi-233/SCSegamba-based_Enhance_Segmentation_for_Crack_on_Wall" target="_blank" rel="noopener" draggable="false">
+            <div class="work-media ph-img" style="background-image:url('images/work3_exhibition.png')">
+              <span class="ph-hint">作品展示图<br>work3.jpg（16:10）</span>
+            </div>
+            <div class="work-body">
+              <h3 class="work-title">基于SCSegamba的墙面裂缝分割优化</h3>
+              <p class="work-desc"></p>
+              <p class="work-meta">模型优化<span class="dot">·</span>2026.06<span class="dot">·</span>Python / PyTorch / Mamba</p>
+              <span class="work-go">打开 GitHub 仓库<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================================
+       竞赛
+  ================================================================== -->
+  <section class="card">
+    <h2 class="section-title">竞赛</h2>
+    <div class="awards">
+
+      <!-- ========== 奖项 1 ========== -->
+      <div class="award" role="button" tabindex="0" aria-haspopup="dialog">
+        <h3 class="award-title">蓝桥杯全国软件和信息技术专业人才大赛</h3>
+        <p class="award-time">2025.03 – 2025.06</p>
+        <p class="award-result">成果：<strong>全国总决赛</strong>Java软件开发大学A组<strong>二等奖</strong></p>
+        <span class="award-hint">查看详情<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+
+        <div class="award-data">
+          <h3 class="aw-title">蓝桥杯全国软件和信息技术专业人才大赛</h3>
+          <p class="aw-meta">2025.03 – 2025.06<span class="dot"> · </span>第十六届</p>
+          <div class="aw-detail">
+            
+            <p>个人赛形式：软件赛为个人赛，选手以个人为单位独立作答，一人一机，全程机考</p>
+            <p>比赛时长：省赛与全国总决赛的时长均为4小时</p>
+            <p>竞赛环境：采用封闭、限时方式，原则上需在线下赛点集中参赛。答题时不允许访问互联网，也不能使用本机以外的资源</p>
+            <ul>
+              <li>分组： 全国总决赛Java软件开发大学A组</li>
+              <!-- <li>技术方案：</li> -->
+              <li>最终成绩：全国二等奖</li>
+              <!-- <li>收获：一句话总结这段经历带来的能力提升。</li> -->
+            </ul>
+          </div>
+          <div class="aw-cert ph-img" style="background-image:url('images/lanqiao.jpg')">
+            <span class="ph-hint">奖状图片<br>award1.jpg（建议 3:2）</span>
+          </div>
+          <div class="aw-foot">
+            <a class="btn btn-primary" href="https://dasai.lanqiao.cn/" target="_blank" rel="noopener">访问官方网站</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== 奖项 2 ========== -->
+      <!-- <div class="award" role="button" tabindex="0" aria-haspopup="dialog">
+        <h3 class="award-title">Kaggle / 天池 / 挑战赛名称</h3>
+        <p class="award-time">2024.03</p>
+        <p class="award-result">排名：<strong>全球第 12 名</strong> / 共 3200 支队伍（Top 0.4%）。</p>
+        <span class="award-hint">查看详情<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+
+        <div class="award-data">
+          <h3 class="aw-title">Kaggle / 天池 / 挑战赛名称</h3>
+          <p class="aw-meta">2024.03<span class="dot"> · </span>主办方 / 赛题名称</p>
+          <div class="aw-detail">
+            <p>赛事简介：主办方、赛题任务、评测指标与数据规模。</p>
+            <ul>
+              <li>方案概述：检测框架选型、主干网络、数据增强与后处理策略。</li>
+              <li>关键改进：多尺度训练 + 测试时增强（TTA），单模 mAP 提升 XX。</li>
+              <li>团队协作：与 X 名队友分工，负责模型训练与调参。</li>
+              <li>最终排名：第 12 名 / 3200 支队伍，获银牌。</li>
+            </ul>
+          </div>
+          <div class="aw-cert ph-img" style="background-image:url('award2.jpg')">
+            <span class="ph-hint">奖状图片<br>award2.jpg（建议 3:2）</span>
+          </div>
+          <div class="aw-foot">
+            <a class="btn btn-primary" href="https://example.com" target="_blank" rel="noopener">访问官方网站</a>
+          </div>
+        </div>
+      </div>
+
+    </div> -->
+  </section>
+
+  <!-- =================================================================
+       技能
+  ================================================================== -->
+  <section class="card" data-page-node-id="TRiFam8CAvcTAJOS2hmMKH">
+    <h2 class="section-title" data-page-node-id="yghqKp9izBBPbOFl5u4fFb">技能</h2>
+    <div class="skills" data-page-node-id="CwrFTDxU66eDunaOyVYdLA">
+      <span class="skill" data-page-node-id="VTmJmEBhu9vUlWIeqsEid2">Python</span>
+      <span class="skill" data-page-node-id="os1JbBQ1UnXH7ZnO3iWMdu">PyTorch</span>
+      <span class="skill" data-page-node-id="6nG5Rg2zj3w8ModKrbJN4w">OpenCV</span>
+      <span class="skill" data-page-node-id="D4y80gOOyGrxcRy7KSHki6">MMDetection</span>
+      <!-- <span class="skill" data-page-node-id="pALJzMl1nieOnbIABDcF5w">Detectron2</span> -->
+      <!-- <span class="skill" data-page-node-id="2QjwCGc0fkKLRDhmadgf9L">TensorRT</span> -->
+      <span class="skill" data-page-node-id="FQGTRreUJwl8Y6Cde9Sq63">CUDA基础</span>
+      <!-- <span class="skill" data-page-node-id="MgFRvYmQON4CzZsYKaDJwu">Docker</span> -->
+      <span class="skill" data-page-node-id="XaCPchndcc9TR4IkkF6uKS">Linux</span>
+      <span class="skill" data-page-node-id="i58xkSlIlsqEb9OuDCYknx">Git</span>
+    </div>
+  </section>
+
+  <p class="copyright" data-page-node-id="aXV3nGV0Dz10NMWUbSnFLd">© 2026 陈柳君 · 个人主页</p>
+</div>
+
+<!-- =================================================================
+     左侧固定栏
+================================================================== -->
+<aside class="rail" aria-label="快捷链接">
+  <nav class="rail-list">
+
+    <a class="rail-btn is-primary" href="docs/个人简历第三版.pdf" download data-page-node-id="3mbe0Rx7tC4mA6uDImLxQN">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a1 1 0 0 1 1 1v9.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.4l3.3 3.3V4a1 1 0 0 1 1-1zM5 19h14a1 1 0 1 1 0 2H5a1 1 0 1 1 0-2z"/></svg>
+      <span class="rail-label">下载简历</span>
+    </a>
+
+    <a class="rail-btn" href="https://github.com/QingLi-233" target="_blank" rel="noopener" data-page-node-id="vPoBn9uD7AsrwZgzuP7D9M">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      <span class="rail-label">GitHub</span>
+    </a>
+
+    <a class="rail-btn" href="mailto:clj133566@foxmail.com" data-page-node-id="IOI5TzFOym08RCajCfaewT">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1.4 2L12 12.3 19.6 7H4.4zM20 8.9l-7.4 5.2a1 1 0 0 1-1.2 0L4 8.9V17h16V8.9z"/></svg>
+      <span class="rail-label">Email</span>
+    </a>
+
+    <!-- Google Scholar / LinkedIn 第一份未启用，保留第二份结构供后续开启
+    <a class="rail-btn" href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 8l10 5 10-5-10-5z"/><path d="M6 12.4V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-3.6l-6 3-6-3z"/></svg>
+      <span class="rail-label">Google Scholar</span>
+    </a>
+    <a class="rail-btn" href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+      <span class="rail-label">LinkedIn</span>
+    </a>
+    -->
+
+    <button class="rail-btn" type="button" id="wxBtn" data-page-node-id="4hBkAqzbq79Xh4FUmwVrI0">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h8v8H3V3zm2 2v4h4V5H5zM13 3h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zM13 13h3v3h-3v-3zm5 0h3v3h-3v-3zm-5 5h3v3h-3v-3zm5 0h3v3h-3v-3z"/></svg>
+      <span class="rail-label">微信二维码</span>
+    </button>
+
+  </nav>
+</aside>
+
+<!-- ==================== 微信二维码弹窗 ==================== -->
+<div class="modal" id="wxModal" hidden data-page-node-id="pfCkXuhK0BAeEhKO6XG3uv">
+  <div class="modal-mask" data-close data-page-node-id="fjL45EWhIZRVcNMtlUN5BP"></div>
+  <div class="modal-box" data-page-node-id="oN7CSf5wzlgyUJ9fuM30w2">
+    <h4 data-page-node-id="QO3pkuGD0f1KZk0aqLC8wV">微信二维码</h4>
+    <div class="qr ph-img" style="background-image:url('images/wechat.png')" data-page-node-id="hcvpByHR1koHhwBgCRCtBL">
+      <span class="ph-hint" data-page-node-id="olvCTsHHfXU7THZPsZSY9G">微信二维码<br data-page-node-id="O2ErDTDuvGn8qOKIozcaUo">wechat.png</span>
+    </div>
+    <p class="hint" data-page-node-id="FiZbOIpp7l4l5DhM8mpYwP">微信号：mc1335665418</p>
+    <button class="btn" type="button" data-close data-page-node-id="QZ0HvOFJDKQYDURZfSKtEY">关闭</button>
+  </div>
+</div>
+
+<!-- ==================== 竞赛详情弹窗 ==================== -->
+<div class="modal" id="awardModal" hidden>
+  <div class="modal-mask" data-close></div>
+  <div class="modal-box award-box" role="dialog" aria-modal="true" aria-label="竞赛详情">
+    <button class="modal-x" type="button" data-close aria-label="关闭">&times;</button>
+    <div id="awardModalBody"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  var CONFIG = {
+    autoScroll: true,
+    speed: 30,
+    pauseOnHover: true,
+    pauseOffscreen: true,
+    respectReducedMotion: false
+  };
+
+  function each(list, fn) {
+    for (var i = 0; i < list.length; i++) fn(list[i], i);
+  }
+  function on(el, type, fn) {
+    if (el.addEventListener) el.addEventListener(type, fn, false);
+    else if (el.attachEvent) el.attachEvent('on' + type, fn);
+  }
+  function onCapture(el, type, fn) {
+    if (el.addEventListener) el.addEventListener(type, fn, true);
+    else if (el.attachEvent) el.attachEvent('on' + type, fn);
+  }
+  function hasClass(el, cls) {
+    return (' ' + el.className + ' ').indexOf(' ' + cls + ' ') > -1;
+  }
+  function addClass(el, cls) {
+    if (!hasClass(el, cls)) el.className = (el.className + ' ' + cls).replace(/^\s+/, '');
+  }
+  function removeClass(el, cls) {
+    el.className = (' ' + el.className + ' ').replace(' ' + cls + ' ', ' ')
+                      .replace(/^\s+/, '').replace(/\s+$/, '');
+  }
+
+  /* =================================================================
+     1) 作品集 · 自动滚动窗格
+  ================================================================== */
+  (function () {
+    if (!CONFIG.autoScroll) return;
+    var SPEED = CONFIG.speed;
+    var pane = document.getElementById('workPane');
+    var row  = document.getElementById('workRow');
+    if (!pane || !row) return;
+
+    var unit = row.getElementsByTagName('a').length;
+    if (!unit) return;
+
+    var copies = Math.ceil(pane.clientWidth * 2 / Math.max(1, row.offsetWidth));
+    if (copies < 1) copies = 1;
+    for (var c = 0; c < copies; c++) {
+      var clone = row.cloneNode(true);
+      clone.removeAttribute('id');
+      clone.setAttribute('aria-hidden', 'true');
+      each(clone.getElementsByTagName('a'), function (a) { a.setAttribute('tabindex', '-1'); });
+      pane.appendChild(clone);
+    }
+
+    var period = 0;
+    function measure() {
+      var all = pane.getElementsByTagName('a');
+      period = all.length > unit ? (all[unit].offsetLeft - all[0].offsetLeft) : 0;
+    }
+    measure();
+
+    var motionOff = CONFIG.respectReducedMotion &&
+                    !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    var hovering = false, dragging = false, tabVisible = true, inView = true;
+    var rafId = null, last = 0, resumeTimer = null;
+    var pos = -1;
+
+    var useTimer = !window.requestAnimationFrame;
+    var lastFrameAt = 0, watchdog = null;
+
+    function nowMs() { return (new Date()).getTime(); }
+
+    function tick(now) {
+      rafId = null;
+      lastFrameAt = nowMs();
+      if (!last) last = now;
+      var dt = now - last;
+      last = now;
+      if (dt > 200) dt = 200;
+      if (pos < 0) pos = pane.scrollLeft;
+      pos += SPEED * dt / 1000;
+      if (period > 0) {
+        if (pos >= period) pos -= period;
+        else if (pos < 0) pos += period;
+      }
+      pane.scrollLeft = pos;
+      run();
+    }
+    function run() {
+      if (rafId) return;
+      if (useTimer) rafId = window.setTimeout(function () { tick(nowMs()); }, 16);
+      else { rafId = window.requestAnimationFrame(tick); armWatchdog(); }
+    }
+    function armWatchdog() {
+      if (useTimer || watchdog) return;
+      watchdog = setTimeout(checkFrames, 700);
+    }
+    function checkFrames() {
+      watchdog = null;
+      if (nowMs() - lastFrameAt > 600) {
+        useTimer = true;
+        halt();
+        run();
+      } else {
+        armWatchdog();
+      }
+    }
+    function halt() {
+      if (rafId) {
+        if (window.cancelAnimationFrame) window.cancelAnimationFrame(rafId);
+        else window.clearTimeout(rafId);
+        rafId = null;
+      }
+      if (watchdog) { clearTimeout(watchdog); watchdog = null; }
+      last = 0;
+      pos = -1;
+    }
+    function sync() {
+      if (!motionOff && tabVisible && inView && !hovering && !dragging && pane.scrollWidth > pane.clientWidth + 4) run();
+      else halt();
+    }
+
+    if (CONFIG.pauseOnHover) {
+      on(pane, 'mouseenter', function () { hovering = true;  sync(); });
+      on(pane, 'mouseleave', function () { hovering = false; sync(); });
+      on(pane, 'touchstart', function () {
+        hovering = true;
+        if (resumeTimer) { clearTimeout(resumeTimer); resumeTimer = null; }
+        sync();
+      });
+      on(pane, 'touchend', function () {
+        if (resumeTimer) clearTimeout(resumeTimer);
+        resumeTimer = setTimeout(function () { hovering = false; sync(); }, 1200);
+      });
+    }
+
+    var startX = 0, startScroll = 0, moved = false;
+    var swallowClick = false;
+    function onMove(e) {
+      if (!dragging) return;
+      var x = e.pageX || e.clientX || 0;
+      var dx = x - startX;
+      if (!moved && Math.abs(dx) > 3) moved = true;
+      if (moved) {
+        pane.scrollLeft = startScroll - dx;
+        if (e.preventDefault) e.preventDefault();
+      }
+    }
+    function onUp() {
+      if (!dragging) return;
+      dragging = false;
+      removeClass(pane, 'is-drag');
+      if (moved) {
+        swallowClick = true;
+        setTimeout(function () { swallowClick = false; }, 120);
+      }
+      if (resumeTimer) clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(function () { sync(); }, 300);
+      sync();
+    }
+    onCapture(pane, 'click', function (e) {
+      if (!swallowClick) return;
+      if (e.preventDefault) e.preventDefault();
+      if (e.stopPropagation) e.stopPropagation();
+      e.cancelBubble = true;
+    });
+    on(pane, 'mousedown', function (e) {
+      if (e.button && e.button !== 0) return;
+      dragging = true; moved = false;
+      startX = e.pageX || e.clientX || 0;
+      startScroll = pane.scrollLeft;
+      addClass(pane, 'is-drag');
+      sync();
+    });
+    on(document, 'mousemove', onMove);
+    on(document, 'mouseup', onUp);
+
+    if (CONFIG.pauseOffscreen) {
+      if (document.hidden !== undefined) {
+        on(document, 'visibilitychange', function () {
+          tabVisible = !document.hidden;
+          sync();
+        });
+      }
+      if (window.IntersectionObserver) {
+        new window.IntersectionObserver(function (entries) {
+          inView = entries[0].isIntersecting;
+          sync();
+        }, { threshold: 0 }).observe(pane);
+      }
+    }
+
+    on(window, 'resize', function () { measure(); sync(); });
+    sync();
+  })();
+
+  /* 2) 图片占位检测 */
+  function probeImgs(root) {
+    each(root.querySelectorAll('.ph-img'), function (el) {
+      var bg = el.getAttribute('style') || '';
+      var m = bg.match(/url\(['"]?([^'")]+)['"]?\)/);
+      if (!m) return;
+      var probe = new Image();
+      probe.onload = function () { addClass(el, 'has-img'); };
+      probe.src = m[1];
+    });
+  }
+  probeImgs(document);
+
+  /* 3) 弹窗：微信 + 竞赛详情 */
+  var docEl = document.documentElement;
+  var lastFocus = null;
+
+  function anyModalOpen() {
+    var open = false;
+    each(document.querySelectorAll('.modal'), function (m) { if (!m.hidden) open = true; });
+    return open;
+  }
+  function openOverlay(m) {
+    m.hidden = false;
+    docEl.style.overflow = 'hidden';
+  }
+  function closeOverlay(m) {
+    if (!m || m.hidden) return;
+    m.hidden = true;
+    if (!anyModalOpen()) docEl.style.overflow = '';
+    if (lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch (e) {} }
+    lastFocus = null;
+  }
+  function wireModal(m) {
+    on(m, 'click', function (e) {
+      var t = e.target || e.srcElement;
+      var hit = false;
+      while (t && t !== m) {
+        if (t.getAttribute && t.getAttribute('data-close') !== null) { hit = true; break; }
+        t = t.parentNode;
+      }
+      if (hit) closeOverlay(m);
+    });
+  }
+  each(document.querySelectorAll('.modal'), wireModal);
+
+  on(document, 'keydown', function (e) {
+    if ((e.keyCode || e.which) !== 27) return;
+    each(document.querySelectorAll('.modal'), function (m) { closeOverlay(m); });
+  });
+
+  var wxBtn = document.getElementById('wxBtn');
+  var wxModal = document.getElementById('wxModal');
+  if (wxBtn && wxModal) {
+    on(wxBtn, 'click', function () {
+      lastFocus = wxBtn;
+      openOverlay(wxModal);
+    });
+    probeImgs(wxModal);
+  }
+
+  var awardModal = document.getElementById('awardModal');
+  var awardBody  = document.getElementById('awardModalBody');
+  if (awardModal && awardBody) {
+    each(document.querySelectorAll('.award'), function (card) {
+      var data = card.getElementsByClassName ? card.getElementsByClassName('award-data')[0] : null;
+      if (!data) return;
+
+      var openAward = function () {
+        lastFocus = card;
+        awardBody.innerHTML = data.innerHTML;
+        openOverlay(awardModal);
+        probeImgs(awardBody);
+        var x = awardModal.getElementsByTagName('button')[0];
+        if (x && x.focus) { try { x.focus(); } catch (err) {} }
+      };
+
+      on(card, 'click', openAward);
+      on(card, 'keydown', function (e) {
+        var k = e.keyCode || e.which;
+        if (k === 13 || k === 32) {
+          if (e.preventDefault) e.preventDefault();
+          openAward();
+        }
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>
